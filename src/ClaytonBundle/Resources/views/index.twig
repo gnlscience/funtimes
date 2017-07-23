@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<loader></loader>
+<div class="container" ng-controller="ContactController as vm">
+    <div class="row">
+        <div class="col-md-3  col-md-offset-4" dw-loading="contact" dw-loading-options="{className: 'custom-loading', spinnerOptions: {className: 'custom-spinner'}}">
+            <h1>Contact Us</h1>
+            <form ng-submit="vm.send()" >
+                <formly-form model="vm.contactFormModel" fields="vm.contactFormFields" form="vm.contactForm">
+                </formly-form>
+                <button ng-disabled="vm.contactForm.$invalid" class="btn btn-green btn-lg text-uppercase btn-block" type="submit">Send</button>
+            </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        (function () {
+            contactApp.value("contactFormFields", {{ form|json_encode()|raw }});
+        })();
+    </script>
+{% endblock %}

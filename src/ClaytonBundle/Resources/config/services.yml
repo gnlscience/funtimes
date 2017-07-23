@@ -1,0 +1,4 @@
+services:
+  ClaytonBundle\:
+        resource: '../../*'
+        exclude: '../../{Entity,Repository}'

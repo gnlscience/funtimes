@@ -1,0 +1,7 @@
+clayton:
+    resource: "@ClaytonBundle/Controller"
+    type:   annotation
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
