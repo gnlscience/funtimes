@@ -8,7 +8,7 @@ namespace ClaytonBundle\ModelBuilder;
  */
 class FormlyModelBuilder
 {
-    public function buildFormlyModel($formFields){
+    public function buildFormlyModel($formFields, $googleKey = null){
         $model = [];
         foreach($formFields as $formField){
                 switch ($formField["type"]) {
@@ -17,6 +17,9 @@ class FormlyModelBuilder
                         break;
                     case 'text' :
                         $model[] = $this->buildTextAreaModel($formField);
+                        break;
+                    case 'captcha' :
+                        $model[] = $this->buildCaptchaModel($formField, $googleKey);
                         break;
                     default :
                         $model[] = $this->buildTextBoxModel($formField);
@@ -58,6 +61,15 @@ class FormlyModelBuilder
         $model = $this->buildFieldModel($formField);
         $model['type'] = 'input';
         $model['templateOptions']['type'] = 'email';
+        return $model;
+    }
+
+    private function buildCaptchaModel($formField, $googleKey)
+    {
+        $model = $this->buildFieldModel($formField);
+        $model['type'] = 'captcha';
+        $model['templateOptions']['required'] = true;
+        $model['templateOptions']['googleKey'] = $googleKey;
         return $model;
     }
 

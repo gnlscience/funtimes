@@ -24,7 +24,7 @@ class ContactController extends Controller
     {
         $contactService = new ContactService();
         $formlyModelBuilder = new FormlyModelBuilder();
-		return $this->render('@Clayton/index.twig', $formlyModelBuilder->buildFormlyModel($contactService->formFields()));
+		return $this->render('@Clayton/index.twig', $formlyModelBuilder->buildFormlyModel($contactService->formFields(), $this->getParameter('google_app_key')));
     }
 
 }

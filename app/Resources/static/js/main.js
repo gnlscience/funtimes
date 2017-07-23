@@ -12,6 +12,7 @@ require('angular-toastr/dist/angular-toastr.css');
 require('../css/loader.css')
 
 import './app/app';
+import './app/contact.config';
 import './app/contact.service';
 import './app/contact.controller';
 import './app/loader.service';

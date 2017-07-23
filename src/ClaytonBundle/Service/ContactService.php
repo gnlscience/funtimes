@@ -13,7 +13,6 @@ class ContactService
                 'label' => 'Name',
                 'input' => 'text',
                 'type' => 'string',
-				'max' => 50,
 				'required' => true
 			],
 			[
@@ -28,7 +27,6 @@ class ContactService
                 'label' => 'Contact',
                 'input' => 'text',
                 'type' => 'number',
-				'max' => 11
 			],
 			[
 				'name' => 'message',
@@ -36,6 +34,13 @@ class ContactService
 				'type' => 'text',
                 'required' => true
 			]
+            ,
+            [
+                'name' => 'captcha',
+                'label' => 'Security',
+                'type' => 'captcha',
+                'required' => true
+            ]
 		];
     }
 
